@@ -2,27 +2,20 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define('book', {
-        isbn: {
+    sequelize.define('product', {
+        code: {
             type: DataTypes.STRING,
+            defaultValue: DataTypes.UUIDV4,
             allowNull: false,
             primaryKey: true,
-        },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         price: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        author: {
+        name: {
             type: DataTypes.STRING,
-            allowNull: true,
-        },
-        editorial: {
-            type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         stock: {
             type: DataTypes.INTEGER,
@@ -31,4 +24,4 @@ module.exports = (sequelize) => {
     },{
         timestamps: false,
     });
-};
+}
