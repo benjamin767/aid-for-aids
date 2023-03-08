@@ -17,8 +17,20 @@ router.post("/login", async (req, res) => {
     try {
         const user = await controllers.login(email,password);
         res.json(user)
-    }catch(error) {
+    } catch(error) {
         res.status(404).send({ error: error.message });
+    }
+});
+
+router.put("/update", async (req, res) => {
+    const { adress, picture } = req.body;
+    const authorization = req.headers.authorization;
+    console.log(authorization)
+    try {
+        const user = await controllers.updateUser(authorization, adress, picture);
+        res.json(user);
+    } catch(error) {
+        res.status(401).send({ error: error.message });
     }
 });
 

@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { User } = require("../../../db");
 const { secret, expires } = process.env;
+
 module.exports = {
     signin: async (email, password, name, adress, picture) => {
         if (!email || !password || !name) throw new Error("Faltan argumentos para crear usuario.");
@@ -51,5 +52,23 @@ module.exports = {
                 token
             };
         });
+    },
+    updateUser: async (auth, adress, picture) => {
+        if(!auth || !auth.toLowerCase().startsWith("bearer")) throw new Error("No estas autorizado a realizar esta acción.")
+        const token = auth.split(" ")[1];
+        const data = jwt.verify(token, secret);
+        if(!data.id) throw new Error("No estas autorizado a realizar esta acción");
+        
+        await User.update({
+            adress,
+            picture
+        },{
+            where: {
+                id: data.id
+            }
+        });
+        const userData = await User.findByPk(data.id);
+        token = jwt.sign(payload, secret, { expiresIn: expires });
+        return { userData, token };
     },
 };
