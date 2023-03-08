@@ -72,11 +72,6 @@ module.exports = (sequelize) => {
         }
       }
     },
-    instanceMethods: {
-      validPassword: (password) => {
-        return bcrypt.compareSync(password, this.password);
-      }
-    }
   },
   {
     timestamps: false,
