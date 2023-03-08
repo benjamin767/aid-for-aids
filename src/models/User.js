@@ -29,10 +29,33 @@ module.exports = (sequelize) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [7,255],
+          msg: "La contraseña debe tener minimamente 7 caracteres."
+        }
+      },
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isAlpha: {
+          msg: "El nombre solo puede contener letras."
+        },
+        len: {
+          args: [2, 255],
+          msg: "El nombre debe tener minimamente dos letras."
+        }
+      },
+    },
+    adress: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   }, {
     hooks: {
