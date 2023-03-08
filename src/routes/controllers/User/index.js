@@ -68,6 +68,10 @@ module.exports = {
             }
         });
         const userData = await User.findByPk(data.id);
+        const payload = {
+            id: user.id,
+            name: user.name,
+        };
         token = jwt.sign(payload, secret, { expiresIn: expires });
         return { userData, token };
     },

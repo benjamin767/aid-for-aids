@@ -25,7 +25,6 @@ router.post("/login", async (req, res) => {
 router.put("/update", async (req, res) => {
     const { adress, picture } = req.body;
     const authorization = req.headers.authorization;
-    console.log(authorization)
     try {
         const user = await controllers.updateUser(authorization, adress, picture);
         res.json(user);
