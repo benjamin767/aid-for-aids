@@ -1,5 +1,6 @@
 const { Book } = require("../../../db");
 const paginate = require("../utils/paginated");
+const { Op } = require("sequelize");
 
 module.exports = {
     createBook: async (isbn, title, price, stock, author, editorial, distributor) => {
@@ -15,22 +16,20 @@ module.exports = {
         });
     },
     getAllBooks: async (pageSize, pageLimit, q, order_by, order_direction) => {
-        if (pageLimit && pageSize) {
-            let order = [];
-            let search = {};
-            if (q) {
-                search = {
-                    where: {
-                        title: {
-                            [Op.like]: `%${q}%`
-                        }
+        let order = [];
+        let search = {};
+        if (q) {
+            search = {
+                where: {
+                    title: {
+                        [Op.like]: `%${q}%`
                     }
-                };
-            }
-            if (order_by && order_direction) order.push([order_by, order_direction]);
-            return await paginate(Book, pageSize, pageLimit, search, order);
+                }
+            };
         }
-        return await Book.findAll();
+        if (order_by && order_direction) order.push([order_by, order_direction]);
+        return await paginate(Book, pageSize, pageLimit, search, order);
+        
     },
     updateStockFromBook: async (addStock, id, isbn, distributor) => {
         if (!addStock) throw new Error("Faltan argumentos para realizar esta acción.");
@@ -48,7 +47,7 @@ module.exports = {
                 }
             });
         }
-        else if(isbn) {
+        else if (isbn) {
             book = await Book.findOne({ where: { isbn } });
             if (!book) throw new Error("Este libro no se encuentra en el inventario.");
             await Book.create({
