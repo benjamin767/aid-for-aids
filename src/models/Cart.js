@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         },
         date: {
             type: DataTypes.DATEONLY,
-            defaultValue: DatasTypes.NOW,
+            defaultValue: DataTypes.NOW,
             allowNull: false,
         },
         total_amount: {

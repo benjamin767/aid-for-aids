@@ -12,9 +12,9 @@ router.get("/", async (req,res) => {
 });
 
 router.post("/", async (req,res) => {
-    const { isbn, title, price, stock, author, editorial } = req.body;
+    const { isbn, title, price, stock, author, editorial, distributor } = req.body;
     try {
-        const newBook = await controllers.createBook(isbn, title, price, stock, author, editorial);
+        const newBook = await controllers.createBook(isbn, title, price, stock, author, editorial, distributor);
         res.status(201).json(newBook);
     } catch(error) {
         res.status(404).send({ error: error.message });
