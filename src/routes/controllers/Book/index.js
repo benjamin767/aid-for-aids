@@ -31,16 +31,16 @@ module.exports= {
         }
         return await Book.findAll();
     },
-    updateStockFromBook: async (addStock, isbn) => {
-        if(!isbn || !addStock) throw new Error("Faltan argumentos para realizar esta acción.");
+    updateStockFromBook: async (addStock, id) => {
+        if(!id || !addStock) throw new Error("Faltan argumentos para realizar esta acción.");
         if(addStock <= 0) throw new Error("Para sumar el stock debe ingresar un número mayor a 0.");
-        const book = await Book.findByPk(isbn);
+        const book = await Book.findByPk(id);
         let stock = book.stock + addStock;
         await Book.update({
             stock
         }, {
             where: {
-                isbn
+                id
             }
         });
         return "¡Stock actualizado con éxito!"

@@ -3,10 +3,15 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('book', {
+        id: {
+            type: DataTypes.STRING,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            primaryKey: true,
+        },
         isbn: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true,
         },
         title: {
             type: DataTypes.STRING,
