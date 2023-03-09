@@ -1,4 +1,27 @@
 # E-Commerce
+
+El proyecto esta realizado en node js con express y sequelize con postgresql. Por el cual necesitamos configurarlo un poco.
+
+## Configurar .env
+* En la raiz del proyecto crear un archivo .env con los siguientes valores:
+```
+    #DB config
+    DB_USER=usuario_pg
+    DB_PASSWORD=contraseña_pg
+    DB_HOST=localhost
+
+    #Auth config
+    secret=aidforaidscorp
+    expires=24h
+```
+Donde usuario_pg es su usuario postgresy contraseña_pg es la contraseña de dicha cuenta.
+
+Luego debemos crear en la shell o con el gestor que use, en postrgres, un base de datos llamada "aid".
+
+Luego abrir una terminal en la raiz del proyecto o en src y ejecutar "npm i" o "npm install" para installar todas las dependencias correspondientes.
+
+Una vez hecho todo esto en la terminal apuntando a src/ ejecutamos "npm start". desde aqui el proyecto deberia correr sin ningun problema, tal sea el caso verificar que los pasos anteriores fueran realizados correctamente.
+
 ### Metodos para Usuarios:
 #### POST: /users/signin
 * En esta ruta podremos crear un nuevo Usuario, debemos pasar por "body" valores llamado: 
