@@ -3,7 +3,7 @@ const paginate = require("../utils/paginated");
 
 module.exports= {
     createBook: async (isbn, title, price, stock, author, editorial) => {
-        if(isbn, title, price, stock) throw new Error("Faltan argumentos para crear libro.");
+        if(!isbn || !title || !price || !stock) throw new Error("Faltan argumentos para crear libro.");
         return await Book.create({
             isbn, 
             title, 
@@ -30,5 +30,19 @@ module.exports= {
             return await paginate(Book, pageSize, pageLimit, search, order);
         }
         return await Book.findAll();
+    },
+    updateStockFromBook: async (addStock, isbn) => {
+        if(!isbn || !addStock) throw new Error("Faltan argumentos para realizar esta acción.");
+        if(addStock <= 0) throw new Error("Para sumar el stock debe ingresar un número mayor a 0.");
+        const book = await Book.findByPk(isbn);
+        let stock = book.stock + addStock;
+        await Book.update({
+            stock
+        }, {
+            where: {
+                isbn
+            }
+        });
+        return "¡Stock actualizado con éxito!"
     },
 }
