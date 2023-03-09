@@ -32,6 +32,7 @@ module.exports = {
         });
         
         let products_id = products.map(prod => prod.id);
+        cart = await Cart.findByPk(cart_id);
         await cart.addBooks(products_id);
         //await cart.addproducts(products_id);
         return cart;
