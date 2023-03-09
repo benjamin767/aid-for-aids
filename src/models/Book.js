@@ -33,6 +33,10 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        picture: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
     },{
         timestamps: false,
     });

@@ -2,34 +2,28 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define('product', {
+    sequelize.define('cart', {
         id: {
             type: DataTypes.STRING,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,
             primaryKey: true,
         },
-        code: {
-            type: DataTypes.STRING,
+        total_products: {
+            type: DataTypes.ARRAY(DataTypes.JSONB),
+            defaultValue: [],
             allowNull: false,
         },
-        price: {
-            type: DataTypes.FLOAT,
+        date: {
+            type: DataTypes.DATEONLY,
+            defaultValue: DatasTypes.NOW,
             allowNull: false,
         },
-        name: {
-            type: DataTypes.STRING,
+        total_amount: {
+            type: DataTypes.DECIMAL,
             allowNull: false,
-        },
-        stock: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-        picture: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
         },
     },{
         timestamps: false,
     });
-}
+};
