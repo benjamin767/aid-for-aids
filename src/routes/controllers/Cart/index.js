@@ -48,9 +48,6 @@ module.exports = {
                 {
                     model: Book,
                 },
-                {
-                    model: Product,
-                },
             ],
         });
         if(!cart) throw new Error("No existe este carrito.");

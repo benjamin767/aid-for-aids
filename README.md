@@ -64,7 +64,8 @@
     - total_products: debe ser un array con productos (Object-JSON) que tengan como obligatorio propiedades llamadas: 
         * id: será el id del producto
         * quantity: la cantidad de productos
-        * precio: el valor por unidad del prodcuto
+        * price: el valor por unidad del prodcuto
+        * stock: cantidad de exitencias del producto
     -  user_id: Debe ser el id de un usuario registrado.
 ```
 * Devolvera un nuevo carrito de compras.
@@ -88,3 +89,13 @@
         * precio: el valor por unidad del prodcuto
     - cart_id: Debe ser el id de un carrito registrado.
 ```
+
+### Metodos para Compras:
+#### POST: /orders
+* Aqui realizaremos las ordenes de compra.
+* para esto se debe pasar por body valores llamados: 
+```Donde: 
+    - cart: Un objeto JSON que obtendra los datos del carrito, en pocas palabras debe ser el carrito
+    - user_id: Debe ser el id de un usuario registrado
+```
+* Devuelve la orden de compra en formato JSON.
