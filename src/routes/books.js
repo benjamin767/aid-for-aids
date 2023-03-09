@@ -22,9 +22,9 @@ router.post("/", async (req,res) => {
 });
 
 router.put("/addStock", async (req,res) => {
-    const { stock, id } = req.body;
+    const { stock, isbn, id, distributor } = req.body;
     try {
-        const msg = await controllers.updateStockFromBook(stock, id);
+        const msg = await controllers.updateStockFromBook(stock, id, isbn, distributor);
         res.send({ status: msg })
     } catch(error) {
         res.status(404).send({ error: error.message });
