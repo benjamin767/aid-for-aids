@@ -95,7 +95,7 @@
 * Aqui realizaremos las ordenes de compra.
 * para esto se debe pasar por body valores llamados: 
 ```Donde: 
-    - cart: Un objeto JSON que obtendra los datos del carrito, en pocas palabras debe ser el carrito
+    - cart_id: debe ser el id de un carrito existente
     - user_id: Debe ser el id de un usuario registrado
 ```
 * Devuelve la orden de compra en formato JSON.

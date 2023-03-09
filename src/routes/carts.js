@@ -17,7 +17,7 @@ router.get("/", async (req,res) => {
     try {
         if(cart_id) {
             const cart = await controllers.getCart(cart_id); 
-            res.json(cart);
+            return res.json(cart);
         }
         const carts = await controllers.getAllCarts(page, limit);
         res.json(carts)
