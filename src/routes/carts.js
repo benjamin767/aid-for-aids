@@ -26,4 +26,14 @@ router.get("/", async (req,res) => {
     }
 })
 
+router.put("/", async (req,res) => {
+    const { products, cart_id } = req.body;
+    try {
+        const cart = await controllers.addProducts(products, cart_id);
+        res.json(cart);
+    } catch(error) {
+        res.status(404).send({ error: error.message });
+    }
+});
+
 module.exports = router;
