@@ -110,6 +110,7 @@ Una vez hecho todo esto en la terminal apuntando a src/ ejecutamos "npm start". 
     - products: debe ser un array con productos (Object-JSON) que tengan como obligatorio propiedades llamadas: 
         * id: será el id del producto
         * quantity: la cantidad de productos
+        * stock: Cantidad de existencias del producto
         * precio: el valor por unidad del prodcuto
     - cart_id: Debe ser el id de un carrito registrado.
 ```
