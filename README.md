@@ -39,9 +39,10 @@ Una vez hecho todo esto en la terminal apuntando a src/ ejecutamos "npm start". 
 * Debemos pasar por "body" valores llamado: email y password.
 * Devolvera en formato JSON algunos datos de usuario junto con un token, este ultimo servira para manipular los datos de usuario.
 
-#### PUT: /users/login
+#### PUT: /users/update
 * Prodemos actualizar datos como Direccion y Foto de perfil.
 * Debemos pasar por "body" valores llamado: adress y o picture.
+* y pasar por "headers" el token del usuario que querramos actualizar.
 * Devuelve en formato JSON El usuario con sus nuevos datos y token.
 
 ### Metodos para Libros:
